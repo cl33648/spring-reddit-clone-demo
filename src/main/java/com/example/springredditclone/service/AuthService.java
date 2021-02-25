@@ -40,7 +40,7 @@ public class AuthService {
         String token = generateVerificationToken(user);
 
         //send an email for verification
-        String link = "http://localhost:8080/api/v1/registration1/confirm?token=" + token;
+        String link = "http://localhost:8080/api/auth/accountVerification/" + token;
         mailService.sendMail(registerRequest.getEmail(), buildEmail(registerRequest.getUsername(), link));
     }
 
@@ -138,12 +138,12 @@ public class AuthService {
         Optional<VerificationToken> verificationTokenOptional = verificationTokenRepository.findByToken(token);
         verificationTokenOptional.orElseThrow(() -> new IllegalStateException("Invalid Token"));
 
-        EnableUser(verificationTokenOptional.get());
+        enableUser(verificationTokenOptional.get());
 
     }
 
     @Transactional
-    public void EnableUser(VerificationToken verificationToken) {
+    public void enableUser(VerificationToken verificationToken) {
 
         String username = verificationToken.getUser().getUsername();
         User user = userRepository.findByUsername(username).orElseThrow(() -> new IllegalStateException("User Not Found with id - " + username));
