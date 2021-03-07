@@ -4,14 +4,14 @@
 My Personal Side project of Reddit Clone Application used with Spring Boot and Angular  
 
 #Part 1 - Entities and Repositories
-1. @Entity/Java classes to represent the each data tables in PostgreSQL 'reddit' db server  
+@Entity/Java classes to represent the each data tables in PostgreSQL 'reddit' db server  
  1. User.java  
  2. Comment.java  
  3. Post.java  
  4. Subreddit.java  
  5. VerificationToken.java  
  6. Vote.java  
-2. Repositories for each Entity java class  
+Repositories for each Entity java class  
  1. UserRepository.java  
  2. CommentRepository.java  
  3. PostRepository.java  
